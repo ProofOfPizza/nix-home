@@ -63,6 +63,6 @@
 
   xdg.configFile = {
     "dunst/dunstrc".source = ../../de/notifications/dunst/dunstrc;
-    "~/.zshrc".source = ../../program/shell/zsh/.zshrc;
   };
+#  home.file.".zshrc".source = ../../program/shell/zsh/.zshrc;
 }
