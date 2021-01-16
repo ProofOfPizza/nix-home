@@ -12,23 +12,22 @@
   };
 
   font = {
-    size = 12.0;
+    size = 11.0;
     use_thin_strokes = true;
 
-    normal.family = "FiraCode Nerd Font";
-    bold.family = "FiraCode Nerd Font";
-    italic.family = "FiraCode Nerd Font";
+    normal.family = "Inconsolata-g for Powerline";
+    bold.family = "Inconsolata-g for Powerline";
+    italic.family = "Inconsolata-g for Powerline";
   };
 
   cursor.style = "Beam";
 
   shell = {
-    program = "fish";
+    program = "zsh";
     #args = [
     #"-C"
     #"/usr/bin/env neofetch"
     #];
-  };
 
   # Challenge Deep
   #colors = {
@@ -97,4 +96,5 @@
       white = "0xECEFF4";
     };
   };
+};
 }
