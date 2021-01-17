@@ -26,6 +26,7 @@ in
     oh-my-zsh
     pulseaudio
     pulsemixer
+    python39
     ripgrep
     signal-desktop
     slack
@@ -86,7 +87,11 @@ in
     };
   };
 
-  home.file.".config/nvim/colors/SpaceMacs.vim".source = ../../program/editor/neovim/SpaceMacs.vim;
+  home.file = {
+    ".config/nvim/colors/SpaceMacs.vim".source = ../../program/editor/neovim/SpaceMacs.vim;
+    ".config/i3/config".source = ../../program/window-manager/i3/config;
+    ".config/i3/i3switch.py".source = ../../program/window-manager/i3/i3switch.py;
+  };
   xdg.configFile = {
     "dunst/dunstrc".source = ../../de/notifications/dunst/dunstrc;
     "nvim/coc-settings.json".source =
