@@ -11,53 +11,55 @@
       path = "./zsh_history";
      };
     shellAliases = {
-      vim = "nvim";
-      fzfi = "rg --files --hidden --follow --no-ignore-vcs -g '!{node_modules,.git}' | fzf";
-      o = "vim $(fzfi)";
-      r = "vicd ./";
-      x = "exit";
-      ghr= "cd ~ && r";
-      gh = "cd ~ && ls -a";
-      gfo = "cd ~/code/Kairos/src/front-ends/kairos-portal && o";
-      gfr = "cd ~/code/Kairos/src/front-ends/kairos-portal && r";
-      gf = "cd ~/code/Kairos/src/front-ends/kairos-portal && ls -a";
-      gto = "cd ~/code/Kairos/src/e2e && o";
-      gtr = "cd ~/code/Kairos/src/e2e && r";
-      gt = "cd ~/code/Kairos/src/e2e && ls -a";
-      gko = "cd ~/code/Kairos && o";
-      gkr = "cd ~/code/Kairos && r";
-      gk = "cd ~/code/Kairos && ls -a";
-      gnr = "cd ~/Nextcloud/Documents && r";
-      gn = "cd ~/Nextcloud/Documents && ls -a";
-      gdev = "cd ~/Nextcloud/Documents/nerdspul/werkspul/dev-division && r";
-      ga = "cd ~/Nextcloud/Documents/music/AntiforZ && r";
-      gd = "cd ~/Downloads && r";
-      swp = "cd ~/.cache/vim/swap && ls -a";
-      kswp = "cd ~/.cache/vim/swap && rm *.* && ls -a";
-      cfv = "vim ~/.vim/vimrc";
-      cfb = "vim ~/.bashrc";
-      cfz = "vim ~/.zshrc";
-      cfi = "vim ~/.i3/config";
-      cfx = "vim ~/.Xresources";
-      backup_config = "~/.scripts/backup_config.sh";
-      kk = "kill -9 $(pgrep KeeWeb)";
-      die = "pkill -i $1 -f";
       backend = "gf; x=$(docker ps -a -q); docker stop $x; if [ ! -z '$x' ]; then docker rm $x; fi; npm run start:be";
-      conflicts = "git diff --name-only --diff-filter=U";
-      frontend = "gf; pkill -i selenium -f; cd ../../e2e && npm run webdriver && cd ../front-ends/kairos-portal && npm start;";
       backend-all = "gf; x=$(docker ps -a -q); docker stop $x; if [ ! -z '$x' ]; then docker rm $x; fi; docker system prune --all --force; docker system prune --volumes --force; npm run build:be; npm run start:be";
       backend-build = "gf; npm run build:be && npm run start:be";
-      seed = "x=$(pwd); gk; cd src/seeds; npm run seed:all; cd $x";
+      backup_config = "~/.scripts/backup_config.sh";
       cases = "gk; cd src/seeds; npm run seed:testdata";
+      cfb = "vim ~/.bashrc";
+      cfi = "vim ~/.i3/config";
+      cfv = "vim ~/.vim/vimrc";
+      cfx = "vim ~/.Xresources";
+      cfz = "vim ~/.zshrc";
+      conflicts = "git diff --name-only --diff-filter=U";
+      die = "pkill -i $1 -f";
       dstop = "docker stop $(docker ps -q); docker rm --force $(docker ps -a -q); docker rmi --force $(docker images -q)";
-      z = "terminal -cd $(pwd)";
+      frontend = "gf; pkill -i selenium -f; cd ../../e2e && npm run webdriver && cd ../front-ends/kairos-portal && npm start;";
+      fuck = "thefuck";
+      fzfi = "rg --files --hidden --follow --no-ignore-vcs -g '!{node_modules,.git}' | fzf";
+      ga = "cd ~/Nextcloud/Documents/music/AntiforZ && r";
+      gd = "cd ~/Downloads && r";
+      gdev = "cd ~/Nextcloud/Documents/nerdspul/werkspul/dev-division && r";
+      gf = "cd ~/code/Kairos/src/front-ends/kairos-portal && ls -a";
+      gfo = "cd ~/code/Kairos/src/front-ends/kairos-portal && o";
+      gfr = "cd ~/code/Kairos/src/front-ends/kairos-portal && r";
+      gh = "cd ~ && ls -a";
+      ghr= "cd ~ && r";
+      gk = "cd ~/code/Kairos && ls -a";
+      gko = "cd ~/code/Kairos && o";
+      gkr = "cd ~/code/Kairos && r";
+      gn = "cd ~/Nextcloud/Documents && ls -a";
+      gnr = "cd ~/Nextcloud/Documents && r";
+      gt = "cd ~/code/Kairos/src/e2e && ls -a";
+      gto = "cd ~/code/Kairos/src/e2e && o";
+      gtr = "cd ~/code/Kairos/src/e2e && r";
+      kk = "kill -9 $(pgrep KeeWeb)";
+      kswp = "cd ~/.cache/vim/swap && rm *.* && ls -a";
+      nx = "~/.config/nixpkgs";
+      o = "vim $(fzfi)";
+      r = "vicd ./";
+      seed = "x=$(pwd); gk; cd src/seeds; npm run seed:all; cd $x";
+      swp = "cd ~/.cache/vim/swap && ls -a";
+      vimii = "x='/home/chai/.vim/pack/coc/start'; if [ ! -d '$x' ]; then mkdir -p $x && cd $x && git clone 'git@github.com:neoclide/coc.nvim.git'; fi; echo 'check je vim alias voor coc bs' && nvim";
+      x = "exit";
+      z = "alacritty --working-directory $(pwd)";
     };
     oh-my-zsh = {
       enable = true;
       plugins = [
         "docker"
         "git"
-      ];	
+      ];
     theme = "agnoster";
     extraConfig = ''
       export FZF_DEFAULT_OPTS="-m"
@@ -92,4 +94,4 @@
       }
     '';
    };
-} 
+}

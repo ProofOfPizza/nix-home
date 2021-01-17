@@ -1,42 +1,49 @@
 { config, lib, pkgs, attrsets, ... }:
+let coc = import ../../program/editor/neovim/coc.nix;
+in
 {
   imports = [
-    ../../program/editor/neovim/default.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
-    dunst
-    zathura
-    libreoffice
-    firefox-esr
-    brave
-    pulseaudio
-    pulsemixer
-    vlc
-    chromium
+    alacritty
     azuredatastudio
-    keepass
-    nodejs-14_x
-    signal-desktop
-    slack
-    zoom
-    teams
-    stellarium
-    mongodb-compass
+    brave
+    chromium
+    dunst
+    firefox-esr
+    fzf
+    htop
     inotify-tools
     jq
-    yq
-    fzf
-    ripgrep
-    vifm
-    alacritty
-    zsh
+    keepass
+    libreoffice
+    mongodb-compass
+    neofetch
+    nodejs-14_x
     oh-my-zsh
-    zsh-powerlevel10k
+    pulseaudio
+    pulsemixer
+    ripgrep
+    signal-desktop
+    slack
+    stellarium
+    teams
+    thefuck
+    vifm
+    vlc
+    whois
+    yarn
+    yq
+    zathura
+    zoom
+    zsh
   ];
 
+  # neovim
+  programs.neovim = import ../../program/editor/neovim/default.nix;
 
   # Zsh Shell
   programs.zsh = import ../../program/shell/zsh/default.nix;
@@ -60,9 +67,25 @@
     };
   };
 
+  # Git
+  programs.git = {
+    enable = true;
+    userEmail = "laagislaag@gmail.com";
+    userName = "ProofOfPizza";
+#    signing.key = "";
+#    signing.signByDefault = true;
+    extraConfig = {
+      url = {
+        "git@github.com:" = {
+          insteadOf = "https://github.com/";
+        };
+      };
+    };
+  };
 
   xdg.configFile = {
     "dunst/dunstrc".source = ../../de/notifications/dunst/dunstrc;
+    "nvim/coc-settings.json".source =
+      builtins.toFile "coc-settings.json" (builtins.toJSON (coc { config = config; }));
   };
-#  home.file.".zshrc".source = ../../program/shell/zsh/.zshrc;
 }
