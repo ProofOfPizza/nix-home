@@ -1,5 +1,6 @@
 with import <nixpkgs> {};
-#let coc-new = pkgs.callPackage ./coc-new {};
+#{ sources ? import ./nix/sources.nix, pkgs ? import sources.nixpkgs {} }:
+#let coc = callPackage ./coc-new.nix;
 #in
 {
   enable = true;
@@ -18,7 +19,7 @@ with import <nixpkgs> {};
 ###    coc-tslint
 ###    coc-tsserver
 ###    coc-yaml
-    coc-nvim
+###    coc
     fzf-vim
     fzfWrapper
     haskell-vim
@@ -37,7 +38,7 @@ with import <nixpkgs> {};
   ];
   extraConfig = ''
     unlet! skip_defaults_vim
-    source $VIMRUNTIME/defaults.vim
+    "source $VIMRUNTIME/defaults.vim
 
     set nocompatible
     set hidden

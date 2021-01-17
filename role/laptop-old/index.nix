@@ -33,6 +33,9 @@ in
     teams
     thefuck
     vifm
+    vivaldi
+    vivaldi-widevine
+    vivaldi-ffmpeg-codecs
     vlc
     whois
     yarn
@@ -83,6 +86,7 @@ in
     };
   };
 
+  home.file.".config/nvim/colors/SpaceMacs.vim".source = ../../program/editor/neovim/SpaceMacs.vim;
   xdg.configFile = {
     "dunst/dunstrc".source = ../../de/notifications/dunst/dunstrc;
     "nvim/coc-settings.json".source =
