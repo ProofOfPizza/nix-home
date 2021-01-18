@@ -1,25 +1,14 @@
 with import <nixpkgs> {};
 #{ sources ? import ./nix/sources.nix, pkgs ? import sources.nixpkgs {} }:
-#let coc = callPackage ./coc-new.nix;
-#in
+let coc = callPackage ./coc-plugin.nix { };
+in
 {
   enable = true;
   viAlias = true;
   vimAlias = true;
   withNodeJs = false;
   plugins = with pkgs.vimPlugins; [
-###    coc-css
-###    coc-eslint
-###    coc-highlight
-###    coc-html
-###    coc-json
-###    coc-nvim
-###    coc-prettier
-###    coc-python
-###    coc-tslint
-###    coc-tsserver
-###    coc-yaml
-###    coc
+    coc
     fzf-vim
     fzfWrapper
     haskell-vim
