@@ -1,6 +1,7 @@
 with import <nixpkgs> {};
 #{ sources ? import ./nix/sources.nix, pkgs ? import sources.nixpkgs {} }:
 let coc = callPackage ./coc-plugin.nix { };
+    niet-fzf = callPackage ./fzf-plugin.nix { };
 in
 {
   enable = true;
@@ -9,8 +10,9 @@ in
   withNodeJs = false;
   plugins = with pkgs.vimPlugins; [
     coc
-    fzf-vim
+   # fzf
     fzfWrapper
+    fzf-vim
     haskell-vim
     Jenkinsfile-vim-syntax
     nerdtree
@@ -86,6 +88,46 @@ in
     let g:fzf_preview_window = ['up:50%:hidden', 'ctrl-/']
     command! -bang -nargs=*  All
       \ call fzf#run(fzf#wrap({'source': 'rg --files --hidden --no-ignore-vcs --glob "!{node_modules/*,.git/*}"', 'options': '--expect=ctrl-t,ctrl-x,ctrl-v --multi --reverse' }))
+
+    "======================== copied from source: https://github.com/junegunn/fzf.vim/blob/master/plugin/fzf.vim ============
+    "======================== can possibly be removed  after update =========================================================
+    command! -bang -nargs=* Rg
+      \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case -- ".shellescape(<q-args>),
+      \ 1, s:p(), <bang>0)
+
+    command! -bang -nargs=* History
+      \ call s:history(<q-args>, s:p(), <bang>0)'])
+
+    command! -bar -bang -nargs=? -complete=buffer Buffers
+      \ call fzf#vim#buffers(<q-args>, s:p({ "placeholder": "{1}" }), <bang>0)
+
+    function! s:p(...)
+      let preview_args = get(g:, 'fzf_preview_window', ['right', 'ctrl-/'])
+      if empty(preview_args)
+        return { 'options': ['--preview-window', 'hidden'] }
+      endif
+
+      " For backward-compatiblity
+      if type(preview_args) == type("")
+        let preview_args = [preview_args]
+      endif
+      return call('fzf#vim#with_preview', extend(copy(a:000), preview_args))
+    endfunction
+
+    function! s:history(arg, extra, bang)
+      let bang = a:bang || a:arg[len(a:arg)-1] == '!'
+      if a:arg[0] == ':'
+        call fzf#vim#command_history(bang)
+      elseif a:arg[0] == '/'
+        call fzf#vim#search_history(bang)
+      else
+        call fzf#vim#history(a:extra, bang)
+      endif
+    endfunction
+
+    "=====================================================================================================================
+    "=====================================================================================================================
+
 
     "count occurences of last search
     nnoremap <leader>n :%s///gn <CR>
