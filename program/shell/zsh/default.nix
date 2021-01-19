@@ -46,7 +46,8 @@
       kk = "kill -9 $(pgrep KeeWeb)";
       kswp = "cd ~/.cache/vim/swap && rm *.* && ls -a";
       nx = "~/.config/nixpkgs";
-      o = "vim $(fzfi)";
+      nxo = "nx && o";
+      o = "if [[ $(fzfi) ]]; then vim $(fzfi); fi";
       r = "vicd ./";
       seed = "x=$(pwd); gk; cd src/seeds; npm run seed:all; cd $x";
       swp = "cd ~/.cache/vim/swap && ls -a";
