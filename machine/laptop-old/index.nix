@@ -14,6 +14,7 @@ in
     brave
     chromium
     dunst
+    feh
     firefox-esr
     fzf
     htop
@@ -44,6 +45,7 @@ in
     vivaldi-ffmpeg-codecs
     vlc
     whois
+    wmctrl
     xdotool
     yarn
     yq

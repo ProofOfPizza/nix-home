@@ -214,17 +214,23 @@ exec --no-startup-id nm-applet
 exec --no-startup-id xautolock -time 100 -locker "i3lock -c c111be"
 
 #set background
-exec --no-startup-id "feh --bg-scale ~/Downloads/copper_4.jpg"
+exec --no-startup-id "feh --bg-scale /home/chai/Downloads/copper_4.jpg"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
         status_command i3status
 }
+
+bindsym $mod+Shift+Tab move workspace to output right
 #############################
 ### settings for i3-gaps: ###
 #############################
+for_window [class=".*"] border pixel 1
 
+smart_gaps on
+gaps inner 10
+gaps outer 4
 ## Set inner/outer gaps
 #gaps inner 15
 #gaps outer 5
