@@ -1,6 +1,6 @@
 { config, lib, pkgs, attrsets, ... }:
 let coc = import ../../program/editor/neovim/coc.nix;
-    nextcloud = pkgs.callPackage ../../program/custom-built/nextcloud/nextcloud.nix {};
+    keeweb = pkgs.callPackage ../../program/custom-built/keeweb/keeweb.nix {};
 in
 {
   imports = [
@@ -13,41 +13,41 @@ in
     azuredatastudio
     brave
     chromium
+    direnv
     dunst
     feh
     firefox-esr
+    flameshot
     fzf
     htop
     inotify-tools
     jq
     keen4
+    keeweb
     keepass
-    keepassx2
     libreoffice
+    lorri
     mongodb-compass
     neofetch
-    nextcloud20
-    nodejs-14_x
+    nextcloud-client
     oh-my-zsh
     pulseaudio
     pulsemixer
-    python38Full
-    python38Packages.pip
-    python38Packages.i3-py
+    qtkeychain
     ripgrep
     signal-desktop
     slack
     stellarium
     teams
+    transmission-gtk
+    unzip
     vifm
     vivaldi
-    vivaldi-widevine
     vivaldi-ffmpeg-codecs
+    vivaldi-widevine
     vlc
     whois
-    wmctrl
-    xdotool
-    yarn
+    xdotool #for autotype
     yq
     zathura
     zoom-us
@@ -107,4 +107,5 @@ in
   xdg.configFile = {
     "dunst/dunstrc".source = ../../de/notifications/dunst/dunstrc;
   };
+  services.lorri.enable = true;
 }

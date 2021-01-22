@@ -1,16 +1,15 @@
 with import <nixpkgs> {};
 #{ sources ? import ./nix/sources.nix, pkgs ? import sources.nixpkgs {} }:
 let coc = callPackage ./coc-plugin.nix { };
-    niet-fzf = callPackage ./fzf-plugin.nix { };
 in
 {
   enable = true;
   viAlias = true;
   vimAlias = true;
-  withNodeJs = false;
+  withNodeJs = true;
   plugins = with pkgs.vimPlugins; [
     coc
-   # fzf
+    direnv-vim
     fzfWrapper
     fzf-vim
     haskell-vim

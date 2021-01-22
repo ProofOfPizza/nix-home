@@ -9,7 +9,6 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./systemPackages.nix
-      ./i3.nix
     ];
 
   # Use the GRUB 2 boot loader.
@@ -68,6 +67,7 @@
       temperature.day = 5700;
       temperature.night = 3000;
     };
+    gnome3.gnome-keyring.enable = true;
   };
 
   virtualisation = {
@@ -170,20 +170,18 @@ environment.pathsToLink = [ "/libexec" ]; # links /libexec from derivations to /
     displayManager = {
         defaultSession = "none+i3";
     };
+
+    windowManager.i3 = {
+      enable = true;
+      package = pkgs.i3-gaps;
+      extraPackages = with pkgs; [
+        dmenu #application launcher most people use
+        i3status # gives you the default i3 status bar
+        i3lock #default i3 screen locker
+        i3blocks #if you are planning on using i3blocks over i3status
+     ];
+    };
   };
-  #  windowManager.i3 = import ./i3.nix;
-#
-#    windowManager.i3 = {
-#      enable = true;
-#      package = pkgs.i3-gaps;
-#      extraPackages = with pkgs; [
-#        dmenu #application launcher most people use
-#        i3status # gives you the default i3 status bar
-#        i3lock #default i3 screen locker
-#        i3blocks #if you are planning on using i3blocks over i3status
-#     ];
-#    };
-#  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

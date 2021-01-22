@@ -93,7 +93,7 @@ bindsym $mod+a layout toggle split
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
 bindsym $mod+F2 exec brave
 #bindsym $mod+F3 exec "KeeWeb ~/Nextcloud/Documents/personal/naamloc-31-05-19"
-bindsym $mod+F3 exec "keepass ~/Nextcloud/Documents/personal/naamloc-31-05-19"
+bindsym $mod+F3 exec "keeweb /home/chai/Nextcloud/Documents/personal/naamloc-31-05-19.kdbx"
 bindsym $mod+F4 exec bash '/home/chai/.config/i3/xrandr-2.sh'
 bindsym $mod+F5 exec xrandr '--auto'
 bindsym $mod+F6 exec terminal alacritty -e 'alsamixer'
@@ -208,7 +208,7 @@ mode "$mode_system" {
 bindsym $mod+l exec "i3lock -c 542f09"
 
 # Autostart applications
-exec --no-startup-id nextcloud
+exec --no-startup-id nextcloud-client
 exec --no-startup-id flameshot
 exec --no-startup-id nm-applet
 exec --no-startup-id xautolock -time 100 -locker "i3lock -c c111be"

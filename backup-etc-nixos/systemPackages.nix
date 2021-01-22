@@ -15,8 +15,10 @@
     dmenu
     docker
     gitAndTools.gitFull
+    gnome3.libgnome-keyring
     home-manager
     htop
+    libsecret
     nano
     niv
     rxvt_unicode

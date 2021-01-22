@@ -47,12 +47,13 @@
       kswp = "cd ~/.cache/vim/swap && rm *.* && ls -a";
       nx = "~/.config/nixpkgs";
       nxo = "nx && o";
-      o = "if [[ $(fzfi) ]]; then vim $(fzfi); fi";
+      o = "x=$(fzfi);vim $x";
       r = "vicd ./";
       seed = "x=$(pwd); gk; cd src/seeds; npm run seed:all; cd $x";
       swp = "cd ~/.cache/vim/swap && ls -a";
       vimii = "x='/home/chai/.vim/pack/coc/start'; if [ ! -d '$x' ]; then mkdir -p $x && cd $x && git clone 'git@github.com:neoclide/coc.nvim.git'; fi; echo 'check je vim alias voor coc bs' && nvim";
       x = "exit";
+      xc = "xclip_in";
       z = "alacritty --working-directory $(pwd)";
     };
     oh-my-zsh = {
@@ -75,6 +76,28 @@
       export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
       export jenkinshost='ec2-18-222-22-215.us-east-2.compute.amazonaws.com'
 
+      export KEYTIMEOUT=1
+
+      # Change cursor shape for different vi modes.
+      function zle-keymap-select {
+        if [[ ''\${KEYMAP} == vicmd ]] ||
+          [[ $1 = 'block' ]]; then
+          echo -ne '\e[1 q'
+        elif [[ ''\${KEYMAP} == main ]] ||
+            [[ ''\${KEYMAP} == viins ]] ||
+            [[ ''\${KEYMAP} = "" ]] ||
+            [[ $1 = 'beam' ]]; then
+          echo -ne '\e[3 q'
+        fi
+      }
+      zle -N zle-keymap-select
+      zle-line-init() {
+          echo -ne "\e[5 q"
+      }
+      zle -N zle-line-init
+      echo -ne '\e[5 q' # Use beam shape cursor on startup.
+      preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+
       function awsl()
       {
         server=$1
@@ -82,6 +105,11 @@
         login=ec2-user@$server
         echo $login
         ssh -i $ssh_file $login -y
+      }
+
+      function xclip_in()
+      {
+        cat $1 | xclip -i -selection clipboard
       }
 
       vicd()
@@ -93,6 +121,7 @@
         fi
         cd "$dst"
       }
+      eval "$(direnv hook zsh)"
     '';
    };
 }
