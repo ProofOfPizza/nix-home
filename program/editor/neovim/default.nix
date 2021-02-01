@@ -1,6 +1,6 @@
 with import <nixpkgs> {};
 #{ sources ? import ./nix/sources.nix, pkgs ? import sources.nixpkgs {} }:
-let coc = callPackage ./coc-plugin.nix { };
+let coc = callPackage ./coc-plugin.nix {};
 in
 {
   enable = true;
@@ -8,6 +8,7 @@ in
   vimAlias = true;
   withNodeJs = true;
   plugins = with pkgs.vimPlugins; [
+    auto-pairs
     coc
     direnv-vim
     fzfWrapper
@@ -22,9 +23,10 @@ in
     vim-addon-nix
     vim-airline
     vim-airline-themes
+    vim-commentary
     vim-javascript
     vim-jsx-pretty
-    vim-multiple-cursors
+    vim-surround
   ];
   extraConfig = ''
     unlet! skip_defaults_vim
@@ -33,6 +35,7 @@ in
     set nocompatible
     set hidden
     set encoding=utf-8
+    set mouse=nv
 
 -   "nerd tree
     map <C-n> :NERDTreeToggle<CR>
@@ -44,7 +47,6 @@ in
     set t_Co=256
     let g:airline_theme='luna'
     let g:airline#extensions#tabline#enabled = 1
-    let g:airline#extensions#tabline#left_sep = ' '
     let g:airline#extensions#tabline#left_alt_sep = '|'
 
     " prettier
@@ -128,9 +130,6 @@ in
     "=====================================================================================================================
 
 
-    "count occurences of last search
-    nnoremap <leader>n :%s///gn <CR>
-
     "buffers
     map <leader>0 :bn<cr>
     map <leader>9 :bp<cr>
@@ -164,9 +163,9 @@ in
     endif
 
     nmap <silent><leader>g <Plug>(coc-definition)
-    nmap <silent> gt <Plug>(coc-type-definition)
-    nmap <silent> gi <Plug>(coc-implementation)
-    nmap <silent> gr <Plug>(coc-references)
+    nmap <leader>t <Plug>(coc-type-definition)
+    nmap <leader>i <Plug>(coc-implementation)
+    nmap <silent>w <Plug>(coc-references)
     nmap <leader>r <Plug>(coc-rename)
 
     " Remap keys for applying codeAction to the current buffer.
@@ -211,26 +210,27 @@ in
          \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
       autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
     endif
-    " multicursor
-
-    let g:multi_cursor_use_default_mapping=0
-
-    " Default mapping
-    let g:multi_cursor_start_word_key      = '<C-m>'
-    let g:multi_cursor_select_all_word_key = '<C-a>'
-    let g:multi_cursor_start_key           = 'g<C-m>'
-    let g:multi_cursor_select_all_key      = 'g<C-a>'
-    let g:multi_cursor_next_key            = '<C-m>'
-    let g:multi_cursor_prev_key            = '<C-p>'
-    let g:multi_cursor_skip_key            = '<C-x>'
-    let g:multi_cursor_quit_key            = '<Esc>'
-    let g:multi_cursor_exit_from_visual_mode   = 0
-    let g:multi_cursor_exit_from_insert_mode   = 0
-
 
     "wrapping selections
     vnoremap \ l<ESC>xgvoh<ESC>x
     command! -nargs=1 -range Wrap :normal! `<<ESC>i<args><ESC>`>l<ESC>a<args><ESC>
     vnoremap ? :Wrap
+
+    "wipe all registers
+    command! WipeReg for i in range(34,122) | silent! call setreg(nr2char(i), []) | endfor
+    nmap <leader>c :WipeReg<CR>
+
+    "count occurences of last search
+    nnoremap <leader>n :%s///gn <CR>
+
+    " commenting
+    vnoremap <C-/> gc
+    nnoremap <C-/> gc
+
+    " Enter and Space in normal / visual mode
+    nnoremap <CR> <Esc>
+    vnoremap a <ESC>a
+    vnoremap i <ESC>i
+
   '';
 }

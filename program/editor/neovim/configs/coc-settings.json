@@ -45,19 +45,19 @@
     "python",
     "edge"
   ],
-  "eslint.enable": false,
+  "eslint.enable": true,
   "eslint.autoFixOnSave": true,
   "eslint.fileTypes": ["javascript", "typescript"],
-  "eslint.options": { "configFile": "./eslintrc.js" },
+  "eslint.options": { "configFile": "/home/chai/eslintrc.js" },
 
-  "tslint.enable": true,
+  "tslint.enable": false,
   "tslint.autoFixOnSave": true,
   "tslint.fileTypes": ["typescript"],
   "tslint.options": { "configFile": "./tslint.json" },
 
-  "stylelint.options": { "configFile": "./.stylelintrc" },
+  "stylelint.options": { "configFile": "/home/chai/stylelintrc.js" },
 
-  "prettier.options": { "configFile": "./.qprettierc" },
+  "prettier.options": { "configFile": "/home/chai/.prettierc" },
   "prettier.disableSuccessMessage": false,
 
   "http.proxySupport": "off",
@@ -66,3 +66,4 @@
   "yaml.format.enable": true,
   "yaml.format.singleQuote": true
 }
+

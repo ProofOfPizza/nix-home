@@ -35,8 +35,10 @@ in
     pulsemixer
     qtkeychain
     ripgrep
+    rox-filer
     signal-desktop
     slack
+    spotify
     stellarium
     teams
     transmission-gtk
@@ -98,11 +100,13 @@ in
   home.file = {
     ".config/nvim/colors/SpaceMacs.vim".source = ../../program/editor/neovim/configs/SpaceMacs.vim;
     ".config/nvim/coc-settings.json".source = ../../program/editor/neovim/configs/coc-settings.json;
-    ".config/nvim/.prettierrc".source = ../../program/editor/neovim/configs/.prettierrc;
-    ".config/nvim/eslintrc.json".source = ../../program/editor/neovim/configs/eslintrc.json;
+    ".prettierrc".source = ../../program/editor/neovim/configs/.prettierrc;
+    "stylelintrc.js".source = ../../program/editor/neovim/configs/stylelintrc.js;
+    "eslintrc.json".source = ../../program/editor/neovim/configs/eslintrc.json;
     ".config/i3/config".source = ../../program/window-manager/i3/config;
     ".config/i3/i3switch".source = ../../program/window-manager/i3/python-switch-script/result/bin/i3switch;
     ".config/i3/xrandr-2.sh".source = ../../program/window-manager/i3/xrandr-2.sh;
+    ".dmenurc".source = ../../program/window-manager/i3/.dmenurc;
   };
   xdg.configFile = {
     "dunst/dunstrc".source = ../../de/notifications/dunst/dunstrc;
