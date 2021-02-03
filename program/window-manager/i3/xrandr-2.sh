@@ -4,9 +4,13 @@ cute="xrandr "
 xrandr --auto
 main="eDP-1"
 if echo $connectedOutputs | grep "HDMI-1";
-  then cute=$cute"--output $main --below HDMI-1";
+  then cute=$cute"--output $main --mode 1920x1080 --rate 119.98 --below HDMI-1";
   echo $cute; `$cute`;
+  cute_too=$cute"--output HDMI-1 --mode 1920x1080 --rate 119.98 --above $main";
+  echo $cute_too; `$cute_too`;
 elif echo $connectedOutputs | grep "HDMI-2";
-  then cute=$cute"--output $main --below HDMI-2";
+  then cute=$cute"--output $main --mode 1920x1080 --rate 119.98 --below HDMI-2";
   echo $cute; `$cute`;
+  cute_too=$cute"--output HDMI-2 --mode 1920x1080 --rate 119.98 --above $main";
+  echo $cute_too; `$cute_too`;
 fi;

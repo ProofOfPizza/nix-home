@@ -34,6 +34,7 @@ in
     pulseaudio
     pulsemixer
     qtkeychain
+    postman
     ripgrep
     rox-filer
     signal-desktop
