@@ -28,6 +28,7 @@
     wget
     xclip
     xorg.xrandr
+    firefox
   ];
 }
 

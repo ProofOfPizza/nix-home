@@ -1,9 +1,10 @@
-{ config, lib, pkgs, attrsets, ... }:
+{ config, lib, pkgs ? import <nixos-unstable> {}, attrsets, ... }:
 let coc = import ../../program/editor/neovim/coc.nix;
     keeweb = pkgs.callPackage ../../program/custom-built/keeweb/keeweb.nix {};
 in
 {
   imports = [
+  ../../program/file-manager/vifm/index.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -14,6 +15,9 @@ in
     brave
     chromium
     direnv
+    docker
+    docker-compose
+    docker-credential-helpers
     dunst
     feh
     firefox-esr
@@ -74,7 +78,7 @@ in
     enable = true;
     settings = lib.attrsets.recursiveUpdate (import ../../program/terminal/alacritty/default-settings.nix) {
       background_opacity = 0.85;
-      font.size = 12;
+      font.size = 10;
       font.user_thin_strokes = false;
       window = {
         decorations = "full";
@@ -105,8 +109,10 @@ in
     "stylelintrc.js".source = ../../program/editor/neovim/configs/stylelintrc.js;
     "eslintrc.json".source = ../../program/editor/neovim/configs/eslintrc.json;
     ".config/i3/config".source = ../../program/window-manager/i3/config;
-    ".config/i3/i3switch".source = ../../program/window-manager/i3/python-switch-script/result/bin/i3switch;
+ #   ".config/i3/i3switch".source = ../../program/window-manager/i3/python-switch-script/result/bin/i3switch;
     ".config/i3/xrandr-2.sh".source = ../../program/window-manager/i3/xrandr-2.sh;
+    ".config/i3/xrandr-1.sh".source = ../../program/window-manager/i3/xrandr-1.sh;
+    ".config/i3/xrandr-1920.sh".source = ../../program/window-manager/i3/xrandr-1920.sh;
     ".dmenurc".source = ../../program/window-manager/i3/.dmenurc;
   };
   xdg.configFile = {

@@ -1,4 +1,4 @@
-# Nix Home
+termina# Nix Home
 
 This repository contains user configuration deployed using the helpful tool [Home Manager](https://github.com/rycee/home-manager).
 In order to setup a new home sapce, simply add a home.nix file similar to this one.

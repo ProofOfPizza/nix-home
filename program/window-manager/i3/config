@@ -6,7 +6,7 @@ set $mod Mod4
 
 exec "setxkbmap -option caps:swapescape"
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:Inconsolata-g for Powerline:size=11
+font pango:Inconsolata-g for Powerline:size=9
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
@@ -112,9 +112,10 @@ bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
 bindsym $mod+F2 exec brave
 #bindsym $mod+F3 exec "KeeWeb ~/Nextcloud/Documents/personal/naamloc-31-05-19"
 bindsym $mod+F3 exec "keeweb /home/chai/Nextcloud/Documents/personal/naamloc-31-05-19.kdbx"
-bindsym $mod+F4 exec bash '/home/chai/.config/i3/xrandr-2.sh'
-bindsym $mod+F5 exec xrandr '--auto'
-bindsym $mod+F6 exec terminal alacritty -e 'alsamixer'
+bindsym $mod+F5 exec bash '/home/chai/.config/i3/xrandr-2.sh'
+bindsym $mod+F4 exec bash '/home/chai/.config/i3/xrandr-1.sh'
+bindsym $mod+F6 exec bash '/home/chai/.config/i3/xrandr-1920.sh'
+bindsym $mod+F7 exec terminal alacritty -e 'alsamixer'
 # bindsym $mod+t exec --no-startup-id pkill compton
 # bindsym $mod+Ctrl+t exec --no-startup-id compton -b
 bindsym $mod+Shift+d --release exec "killall dunst;"
@@ -207,7 +208,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Set shut down, restart and locking features
-bindsym $mod+Ctrl+l mode "$mode_system"
+bindsym $mod+F10 mode "$mode_system"
 set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
 mode "$mode_system" {
     bindsym l exec --no-startup-id i3exit lock, mode "default"
@@ -237,9 +238,14 @@ exec --no-startup-id "feh --bg-scale /home/chai/Downloads/copper_4.jpg"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
+        output eDP-1
         status_command i3status
 }
 
+bar {
+        output HDMI-1
+        status_command i3status
+}
 bindsym $mod+Shift+Tab move workspace to output right
 #############################
 ### settings for i3-gaps: ###

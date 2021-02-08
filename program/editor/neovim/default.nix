@@ -14,6 +14,7 @@ in
     fzfWrapper
     fzf-vim
     haskell-vim
+    i3config-vim
     Jenkinsfile-vim-syntax
     nerdtree
     supertab
@@ -26,6 +27,7 @@ in
     vim-commentary
     vim-javascript
     vim-jsx-pretty
+    vim-nix
     vim-surround
   ];
   extraConfig = ''
@@ -224,13 +226,23 @@ in
     nnoremap <leader>n :%s///gn <CR>
 
     " commenting
-    vnoremap <C-/> gc
-    nnoremap <C-/> gc
+    nnoremap ff :Commentary<CR>
+    vnoremap ff :Commentary<CR>
+    vnoremap fg $%:Commentary<CR>
 
     " Enter and Space in normal / visual mode
     nnoremap <CR> <Esc>
     vnoremap a <ESC>a
     vnoremap i <ESC>i
+
+    " run @q in visual block
+    xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
+
+    function! ExecuteMacroOverVisualRange()
+      echo "@".getcmdline()
+      execute ":'<,'>normal @".nr2char(getchar())
+    endfunction
+
 
   '';
 }
