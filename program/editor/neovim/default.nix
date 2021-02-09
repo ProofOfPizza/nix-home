@@ -16,7 +16,6 @@ in
     haskell-vim
     i3config-vim
     Jenkinsfile-vim-syntax
-    nerdtree
     supertab
     syntastic
     tabular
@@ -25,6 +24,7 @@ in
     vim-airline
     vim-airline-themes
     vim-commentary
+    vim-floaterm
     vim-javascript
     vim-jsx-pretty
     vim-nix
@@ -38,11 +38,6 @@ in
     set hidden
     set encoding=utf-8
     set mouse=nv
-
--   "nerd tree
-    map <C-n> :NERDTreeToggle<CR>
-    autocmd StdinReadPre * let s:std_in=1
-    autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 
     " airline
     let g:airline_powerline_fonts = 1
@@ -131,6 +126,9 @@ in
     "=====================================================================================================================
     "=====================================================================================================================
 
+    "Floaterm
+    nnoremap <leader>m :FloatermNew --autoclose=2 vifm<CR>
+    vnoremap <leader>m :FloatermNew --autoclose=2 vifm<CR>
 
     "buffers
     map <leader>0 :bn<cr>

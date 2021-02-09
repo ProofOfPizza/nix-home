@@ -107,7 +107,7 @@ in
     ".config/nvim/coc-settings.json".source = ../../program/editor/neovim/configs/coc-settings.json;
     ".prettierrc".source = ../../program/editor/neovim/configs/.prettierrc;
     "stylelintrc.js".source = ../../program/editor/neovim/configs/stylelintrc.js;
-    "eslintrc.json".source = ../../program/editor/neovim/configs/eslintrc.json;
+    "eslintrc.js".source = ../../program/editor/neovim/configs/eslintrc.js;
     ".config/i3/config".source = ../../program/window-manager/i3/config;
  #   ".config/i3/i3switch".source = ../../program/window-manager/i3/python-switch-script/result/bin/i3switch;
     ".config/i3/xrandr-2.sh".source = ../../program/window-manager/i3/xrandr-2.sh;
