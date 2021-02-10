@@ -12,6 +12,7 @@ in
     coc
     direnv-vim
     fzfWrapper
+    emmet-vim
     fzf-vim
     haskell-vim
     i3config-vim
@@ -228,7 +229,12 @@ in
     vnoremap ff :Commentary<CR>
     vnoremap fg $%:Commentary<CR>
 
-    " Enter and Space in normal / visual mode
+    "emmet
+    let g:user_emmet_install_global = 0
+    autocmd FileType html,css EmmetInstall
+    let g:user_emmet_leader_key=','
+
+    "Enter and Space in normal / visual mode
     nnoremap <CR> <Esc>
     vnoremap a <ESC>a
     vnoremap i <ESC>i
