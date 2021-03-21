@@ -19,6 +19,8 @@ in
     docker-compose
     docker-credential-helpers
     dunst
+    element-desktop
+    evince
     feh
     firefox-esr
     flameshot
@@ -31,8 +33,9 @@ in
     keepass
     libreoffice
     lorri
+    lsof
+    monero
     mongodb-compass
-    neofetch
     nextcloud-client
     oh-my-zsh
     pulseaudio
@@ -48,13 +51,14 @@ in
     teams
     transmission-gtk
     unzip
+    viewnior
     vifm
     vivaldi
     vivaldi-ffmpeg-codecs
     vivaldi-widevine
     vlc
     whois
-    xdotool #for autotype
+    xmrig
     yq
     zathura
     zoom-us
@@ -107,8 +111,8 @@ in
   home.file = {
     ".config/nvim/colors/SpaceMacs.vim".source = ../../program/editor/neovim/configs/SpaceMacs.vim;
     ".config/nvim/coc-settings.json".source = ../../program/editor/neovim/configs/coc-settings.json;
-    ".prettierrc".source = ../../program/editor/neovim/configs/.prettierrc;
-    "stylelintrc.js".source = ../../program/editor/neovim/configs/stylelintrc.js;
+    # ".prettierrc".source = ../../program/editor/neovim/configs/.prettierrc;
+    # ".stylelintrc".source = ../../program/editor/neovim/configs/.stylelintrc;
     "eslintrc.js".source = ../../program/editor/neovim/configs/eslintrc.js;
     ".config/i3/config".source = ../../program/window-manager/i3/config;
  #   ".config/i3/i3switch".source = ../../program/window-manager/i3/python-switch-script/result/bin/i3switch;

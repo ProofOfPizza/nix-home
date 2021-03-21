@@ -25,11 +25,11 @@ in
     vim-airline
     vim-airline-themes
     vim-commentary
+    vim-css-color
     vim-floaterm
     vim-javascript
     vim-jsx-pretty
     vim-nix
-    vim-surround
   ];
   extraConfig = ''
     unlet! skip_defaults_vim
@@ -234,12 +234,33 @@ in
     autocmd FileType html,css EmmetInstall
     let g:user_emmet_leader_key=','
 
+    nnoremap w <ESC>
+
     "Enter and Space in normal / visual mode
     nnoremap <CR> <Esc>
     vnoremap a <ESC>a
     vnoremap i <ESC>i
 
-    " run @q in visual block
+    "moving selections up down
+    xnoremap <C-S-Up> xkP`[V`]
+    xnoremap <C-S-Down> xp`[V`]
+    xnoremap <C-S-Left> <gv
+    xnoremap <C-S-Right> >gv
+
+    function! MoveLineAndInsert(n)       " -x=up x lines; +x=down x lines
+      let n_move = (a:n < 0 ? a:n-1 : '+'.a:n)
+      let pos = getcurpos()
+      try         " maybe out of range
+          exe ':move'.n_move
+          call setpos('.', [0,pos[1]+a:n,pos[2],0])
+      finally
+          startinsert
+      endtry
+    endfunction
+    inoremap <C-S-Up> <Esc>`^:silent! call MoveLineAndInsert(-1)<CR>
+    inoremap <C-S-Down> <Esc>`^:silent! call MoveLineAndInsert(+1)<CR>
+
+    "run @q in visual block
     xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
 
     function! ExecuteMacroOverVisualRange()

@@ -140,6 +140,7 @@ command! run !! ./%f
 command! make !!make %a
 command! mkcd :mkdir %a | cd %a
 command! md :mkdir %a
+command! t :touch %a
 command! vgrep vim "+grep %a"
 command! reload :write | restart
 
@@ -285,18 +286,23 @@ filetype *.asc
        \ !!gpg --verify %c,
 
 " Torrent
-filetype *.torrent ktorrent %f &
+filetype *.torrent transmission-gtk %f &
 fileviewer *.torrent dumptorrent -v %c
 
-" FuseZipMount
-filetype *.zip,*.jar,*.war,*.ear,*.oxt,*.apkg
+"Zips
+filetype *.zip
+      \ {unzip the archive}
+      \ unzip %c
+
+"FuseZipMount
+filetype *.jar,*.war,*.ear,*.oxt,*.apkg
        \ {Mount with fuse-zip}
        \ FUSE_MOUNT|fuse-zip %SOURCE_FILE %DESTINATION_DIR,
        \ {View contents}
        \ zip -sf %c | less,
        \ {Extract here}
        \ tar -xf %c,
-fileviewer *.zip,*.jar,*.war,*.ear,*.oxt zip -sf %c
+fileviewer *.jar,*.war,*.ear,*.oxt zip -sf %c
 
 " ArchiveMount
 filetype *.tar,*.tar.bz2,*.tbz2,*.tgz,*.tar.gz,*.tar.xz,*.txz
