@@ -23,7 +23,7 @@
 
   # networking.hostName = "nixos"; # Define your hostname.
   networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
+hardware.opengl.driSupport32Bit = true;
   # Set your time zone.
   # time.timeZone = "Europe/Amsterdam";
 
@@ -104,7 +104,7 @@
 
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.mutableUsers = false;
+  users.mutableUsers = true;
   users.extraUsers.chai = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "docker" ]; # Enable ‘sudo’ for the user.

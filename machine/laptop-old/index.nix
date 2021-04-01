@@ -11,6 +11,7 @@ in
 
   home.packages = with pkgs; [
     alacritty
+    # awscli2
     azuredatastudio
     brave
     chromium
@@ -35,7 +36,7 @@ in
     lorri
     lsof
     monero
-    mongodb-compass
+    # mongodb-compass
     nextcloud-client
     oh-my-zsh
     pulseaudio
@@ -47,6 +48,7 @@ in
     signal-desktop
     slack
     spotify
+    steam
     stellarium
     teams
     transmission-gtk
