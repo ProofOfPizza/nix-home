@@ -30,6 +30,8 @@ in
     vim-javascript
     vim-jsx-pretty
     vim-nix
+    vim-terraform
+    vim-terraform-completion
   ];
   extraConfig = ''
     unlet! skip_defaults_vim

@@ -11,7 +11,6 @@ in
 
   home.packages = with pkgs; [
     alacritty
-    # awscli2
     azuredatastudio
     brave
     chromium
@@ -23,7 +22,7 @@ in
     element-desktop
     evince
     feh
-    firefox-esr
+    firefox
     flameshot
     fzf
     htop
@@ -36,12 +35,12 @@ in
     lorri
     lsof
     monero
-    # mongodb-compass
     nextcloud-client
     oh-my-zsh
     pulseaudio
     pulsemixer
     qtkeychain
+    peek
     postman
     ripgrep
     rox-filer
