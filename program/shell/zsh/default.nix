@@ -6,8 +6,8 @@
     defaultKeymap = "viins";
     #dotDir = "./.config/nixpkgs/program/shell/zsh";
     history = {
-      size = 1000;
-      save = 1000;
+      size = 10000;
+      save = 10000;
       path = "./zsh_history";
      };
     shellAliases = {
@@ -49,6 +49,7 @@
       o = "x=$(fzfi);vim $x";
       r = "vicd ./";
       seed = "x=$(pwd); cd ~/code/Kairos/src/seeds; npm run seed:userdata; cd $x";
+      seed-all = "x=$(pwd); cd ~/code/Kairos/src/seeds; npm run seed:userdata; npm run seed:testdata; cd $x";
       seed-db = "x=$(pwd); cd ~/code/Kairos/src/seeds; npm run seed:createDb; cd $x";
       swp = "cd ~/.cache/vim/swap && ls -a";
       vimii = "x='/home/chai/.vim/pack/coc/start'; if [ ! -d '$x' ]; then mkdir -p $x && cd $x && git clone 'git@github.com:neoclide/coc.nvim.git'; fi; echo 'check je vim alias voor coc bs' && nvim";
