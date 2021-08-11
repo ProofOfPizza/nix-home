@@ -43,6 +43,7 @@
       gtr = "cd ~/code/Kairos/src/e2e && r";
       kk = "kill -9 $(pgrep KeeWeb)";
       kswp = "cd ~/.cache/vim/swap && rm *.* && ls -a";
+      nixos-rb ="sudo nixos-rebuild switch -I nixos-config=/home/chai/.config/nixpkgs/system/configuration.nix";
       nx = "~/.config/nixpkgs";
       nxo = "nx && o";
       nxr = "nx && r";

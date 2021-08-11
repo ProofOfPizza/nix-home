@@ -29,6 +29,7 @@
     xclip
     xorg.xrandr
     firefox
+    gimp
   ];
 }
 
