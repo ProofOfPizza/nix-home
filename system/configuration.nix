@@ -31,6 +31,7 @@ hardware.opengl.driSupport32Bit = true;
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
   networking.useDHCP = false;
+  networking.wireless.interfaces = [ "wlp2s0" ];
   networking.interfaces.wlp2s0.useDHCP = true;
   time.timeZone = "Europe/Amsterdam";
   #networking.networkmanager.enable = true;
@@ -81,7 +82,7 @@ hardware.opengl.driSupport32Bit = true;
       temperature.day = 5700;
       temperature.night = 3000;
     };
-    gnome3.gnome-keyring.enable = true;
+    gnome.gnome-keyring.enable = true;
   };
 
   virtualisation = {
@@ -93,7 +94,7 @@ hardware.opengl.driSupport32Bit = true;
   programs.vim.defaultEditor = true;
 
   fonts.fonts = [ pkgs.powerline-fonts ];
-  fonts.enableFontDir = true;
+  fonts.fontDir.enable = true;
   fonts.enableDefaultFonts = true;
   fonts.fontconfig.enable = true;
   fonts.fontconfig.defaultFonts.monospace = [ "Inconsolata-g for Powerline:h12" ];

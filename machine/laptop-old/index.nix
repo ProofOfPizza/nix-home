@@ -1,6 +1,7 @@
-{ config, lib, pkgs ? import <nixos-unstable> {}, attrsets, ... }:
+{ config, lib, pkgs ? import <unstable> {}, attrsets, ... }:
 let coc = import ../../program/editor/neovim/coc.nix;
     keeweb = pkgs.callPackage ../../program/custom-built/keeweb/keeweb.nix {};
+    # exodus = pkgs.callPackage ../../program/custom-built/exodus/exodus.nix {};
 in
 {
   imports = [
@@ -21,6 +22,7 @@ in
     dunst
     element-desktop
     evince
+    exodus
     feh
     firefox
     flameshot
@@ -39,7 +41,7 @@ in
     oh-my-zsh
     pulseaudio
     pulsemixer
-    qtkeychain
+    libsForQt5.qtkeychain
     peek
     postman
     ripgrep
@@ -59,6 +61,7 @@ in
     vivaldi-widevine
     vlc
     whois
+    xarchiver
     xmrig
     yq
     zathura
