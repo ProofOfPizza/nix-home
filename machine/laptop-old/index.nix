@@ -30,6 +30,7 @@ in
     htop
     inotify-tools
     jq
+    jwt-cli
     keen4
     keeweb
     keepass
@@ -37,6 +38,7 @@ in
     lorri
     lsof
     monero
+    mysql-workbench
     nextcloud-client
     oh-my-zsh
     pulseaudio
