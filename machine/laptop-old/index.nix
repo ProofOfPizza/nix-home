@@ -27,6 +27,7 @@ in
     firefox
     flameshot
     fzf
+    gsmartcontrol
     htop
     inotify-tools
     jq
@@ -40,6 +41,7 @@ in
     monero
     mysql-workbench
     nextcloud-client
+    nvme-cli
     oh-my-zsh
     pulseaudio
     pulsemixer
