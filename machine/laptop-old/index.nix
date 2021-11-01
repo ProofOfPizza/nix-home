@@ -46,6 +46,7 @@ in
     pulseaudio
     pulsemixer
     libsForQt5.qtkeychain
+    p7zip
     peek
     postman
     ripgrep

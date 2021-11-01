@@ -101,8 +101,22 @@ hardware.opengl.driSupport32Bit = true;
   console.font = "Meslo for  Powerline:h12";
 
   sound.enable = true;
-  hardware.pulseaudio.enable = true;
-  hardware.bluetooth.enable = true;
+
+hardware = {
+    pulseaudio = {
+      enable = true;
+      package = pkgs.pulseaudioFull;
+      extraModules = [ pkgs.pulseaudio-modules-bt ];
+    };
+    bluetooth = {
+      enable = true;
+      extraConfig = "
+        [General]
+        Enable=Source,Sink,Media,Socket
+      ";
+    };
+  };
+
   services.blueman.enable = true;
 
 
