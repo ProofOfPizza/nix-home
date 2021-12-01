@@ -20,6 +20,8 @@
       preLVM = true;
       };
   };
+  programs.java.enable = true;
+
 
   # networking.hostName = "nixos"; # Define your hostname.
   networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -108,16 +110,7 @@ hardware = {
       package = pkgs.pulseaudioFull;
       extraModules = [ pkgs.pulseaudio-modules-bt ];
     };
-    bluetooth = {
-      enable = true;
-      extraConfig = "
-        [General]
-        Enable=Source,Sink,Media,Socket
-      ";
-    };
   };
-
-  services.blueman.enable = true;
 
 
   # Define a user account. Don't forget to set a password with ‘passwd’.

@@ -41,7 +41,9 @@
     "css",
     "Markdown",
     "html",
-    "python"
+    "python",
+    "java",
+    "xml"
   ],
   "html.format.enable": true,
   "html.format.wrapLineLength": 0,
@@ -63,6 +65,28 @@
   "coc.preferences.formatOnType": true,
 
   "yaml.format.enable": true,
-  "yaml.format.singleQuote": true
+  "yaml.format.singleQuote": true,
+
+  "suggest.completionItemKindLabels": {
+    "text": "t",
+    "method": "m",
+    "function": ""
+  },
+  "snippets.priority": 1,
+  "suggest.languageSourcePriority": 99,
+  "coc.source.file.priority": 2,
+  "coc.source.around.priority": 3,
+  "coc.source.buffer.priority": 4,
+
+  "diagnostic.errorSign": " ",
+  "diagnostic.warningSign": " ",
+  "diagnostic.infoSign": "",
+  "diagnostic.hintSign": " ",
+  "codeLens.enable": true,
+  "java.referencesCodeLens.enabled": true,
+  "java.implementationsCodeLens.enabled": true,
+  "java.completion.enabled": true,
+  "java.jdt.ls.vmargs": "-noverify -Xmx6G -XX:+UseG1GC -XX:+UseStringDeduplication",
+  "java.home": "/nix/store/73sflsh3faizaxbqrgdbpjz9y893qk26-openjdk-11.0.12+7/lib/openjdk"
 }
 

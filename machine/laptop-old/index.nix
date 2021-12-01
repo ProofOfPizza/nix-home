@@ -41,6 +41,7 @@ in
     monero
     mysql-workbench
     nextcloud-client
+    nmap
     nvme-cli
     oh-my-zsh
     pulseaudio

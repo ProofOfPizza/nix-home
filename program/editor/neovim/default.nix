@@ -18,7 +18,7 @@ in
     i3config-vim
     Jenkinsfile-vim-syntax
     supertab
-    syntastic
+    # syntastic
     tabular
     typescript-vim
     vim-addon-nix
@@ -140,20 +140,8 @@ in
     map <leader>4 ":b "
     nnoremap <C-x> :bd<cr>
 
-    " syntastic settings
-    map <Leader>s :SyntasticToggleMode<CR>
-    set statusline+=%#warningmsg#
-    set statusline+=%{SyntasticStatuslineFlag()}
-    set statusline+=%*
-
-    let g:syntastic_always_populate_loc_list = 1
-    let g:syntastic_auto_loc_list = 1
-    let g:syntastic_check_on_open = 1
-    let g:syntastic_check_on_wq = 0
-    let g:syntastic_javascript_checkers = ['jsl']
-
     " CoC extensions
-    let g:coc_global_extensions = ['coc-solargraph', 'coc-tsserver', 'coc-json']
+    let g:coc_global_extensions = ['coc-solargraph', 'coc-json', 'coc-java', 'coc-tsserver', 'coc-xml']
 
     " Add CoC Prettier if prettier is installed
     if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
@@ -168,13 +156,29 @@ in
     nmap <silent><leader>g <Plug>(coc-definition)
     nmap <leader>t <Plug>(coc-type-definition)
     nmap <leader>i <Plug>(coc-implementation)
-    nmap <silent>w <Plug>(coc-references)
+    nmap <leader>w <Plug>(coc-references)
     nmap <leader>r <Plug>(coc-rename)
 
     " Remap keys for applying codeAction to the current buffer.
     nmap <leader>d  <Plug>(coc-codeaction)
     " Apply AutoFix to problem on the current line.
     nmap <leader>f  <Plug>(coc-fix-current)
+
+    " Use K to show documentation in preview window.
+    nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+    function! s:show_documentation()
+      if (index(['vim','help'], &filetype) >= 0)
+        execute 'h '.expand('<cword>')
+      elseif (coc#rpc#ready())
+        call CocActionAsync('doHover')
+      else
+        execute '!' . &keywordprg . " " . expand('<cword>')
+      endif
+    endfunction
+
+    " Highlight the symbol and its references when holding the cursor.
+    autocmd CursorHold * silent call CocActionAsync('highlight')
 
 
     " Spellcheck for features and markdown
@@ -199,14 +203,6 @@ in
     vnoremap <Leader>t= :Tabularize /=<CR>
     nnoremap <Leader>t: :Tabularize /:\zs<CR>
     vnoremap <Leader>t: :Tabularize /:\zs<CR>
-
-    "  folds:
-    set foldmethod=syntax
-    set foldnestmax=10
-    set nofoldenable
-    set foldlevel=2
-    nmap z za
-
 
     if empty(glob('~/.vim/autoload/plug.vim'))
       silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
