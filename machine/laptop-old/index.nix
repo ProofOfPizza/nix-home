@@ -18,7 +18,7 @@ in
     direnv
     docker
     docker-compose
-    docker-credential-helpers
+    # docker-credential-helpers
     dunst
     element-desktop
     evince
@@ -35,6 +35,7 @@ in
     keen4
     keeweb
     keepass
+    kpcli
     libreoffice
     lorri
     lsof
