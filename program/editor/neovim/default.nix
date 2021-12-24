@@ -17,6 +17,7 @@ in
     haskell-vim
     i3config-vim
     Jenkinsfile-vim-syntax
+    papercolor-theme
     supertab
     # syntastic
     tabular
@@ -29,9 +30,9 @@ in
     vim-floaterm
     vim-javascript
     vim-jsx-pretty
+    vim-markdown
     vim-nix
     vim-terraform
-    vim-terraform-completion
   ];
   extraConfig = ''
     unlet! skip_defaults_vim
@@ -41,6 +42,8 @@ in
     set hidden
     set encoding=utf-8
     set mouse=nv
+
+    autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 
     " airline
     let g:airline_powerline_fonts = 1
@@ -63,7 +66,10 @@ in
     let g:hident_on_save = 1
     set number
     syntax on
-    colorscheme SpaceMacs
+
+    set background=dark
+    colorscheme PaperColor
+    " colorscheme SpaceMacs
 
     set tabstop =4
     set expandtab
