@@ -38,12 +38,13 @@ in
     unlet! skip_defaults_vim
     "source $VIMRUNTIME/defaults.vim
 
+    set nofixendofline
     set nocompatible
     set hidden
     set encoding=utf-8
     set mouse=nv
 
-    autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+    autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.github
 
     " airline
     let g:airline_powerline_fonts = 1

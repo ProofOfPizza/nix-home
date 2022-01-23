@@ -15,6 +15,7 @@ in
     azuredatastudio
     brave
     chromium
+    dig
     direnv
     docker
     docker-compose
@@ -27,7 +28,7 @@ in
     firefox
     flameshot
     fzf
-    gsmartcontrol
+    gnupg
     htop
     inotify-tools
     jq
