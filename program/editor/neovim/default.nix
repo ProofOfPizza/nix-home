@@ -38,7 +38,7 @@ in
     unlet! skip_defaults_vim
     "source $VIMRUNTIME/defaults.vim
 
-    set nofixendofline
+    set noeol
     set nocompatible
     set hidden
     set encoding=utf-8
