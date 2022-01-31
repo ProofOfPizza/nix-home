@@ -43,6 +43,7 @@ in
     set hidden
     set encoding=utf-8
     set mouse=nv
+    set nofoldenable
 
     autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.github
 
