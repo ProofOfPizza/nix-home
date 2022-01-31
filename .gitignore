@@ -1,2 +1,15 @@
 home.nix
 **/result/
+
+**/.terraform/*
+
+# .tfstate and tfvars files are sops encrypted
+
+# Crash log files
+crash.log
+
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
