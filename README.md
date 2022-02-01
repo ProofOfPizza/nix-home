@@ -1,22 +1,12 @@
-termina# Nix Home
+# Nix Home
 
 This repository contains user configuration deployed using the helpful tool [Home Manager](https://github.com/rycee/home-manager).
-In order to setup a new home sapce, simply add a home.nix file similar to this one.
 
-A full explanation of my portable user configuration management (dotfiles) system can be found on my [blog](https://blog.hugoreeves.com/posts/2019/08/your-home-in-nix-dotfile-management/).
+It was forked from [Hugo Reeves](https://github.com/HugoReeves/nix-home)
+A full explanation of his portable user configuration management (dotfiles) system can be found on my [blog](https://blog.hugoreeves.com/posts/2019/08/your-home-in-nix-dotfile-management/).
 
-```nix
-{ config, pkgs, ... }:
+My adaptation are personal taste. I removed a bunch of stuff reducing complexity, but then again I wanted to also have the ability to restore all my secrets and keys,
+so I added [Mozilla] Sops to encrypt those, maintaining keys with terraform in AWS.
 
-{
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
+For an explanation of how that can be achieved please read my blog at [calzone.proofofpizza.com](https://calzone.proofofpizza.com/tech/tutorial/using-sops-with-aws-and-terraform/)
 
-  imports = [
-    ./machine/apollo.nix
-    ./user/x.nix
-    ./role/darwin-laptop/index.nix
-  ];
-}
-```
-**Machine** contains configuration specific to a given machine. **User** contains configuration specific to a given user, think git config etc. **Role** contains the bulk of the configuration and sets up most user space tools, think neovim and your terminal.
