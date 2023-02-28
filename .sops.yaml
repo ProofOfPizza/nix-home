@@ -1,0 +1,4 @@
+creation_rules:
+    - path_regex: .*encrypted/.*
+      kms: arn:aws:kms:eu-central-1:640753244498:key/c3c531e4-64fb-4d42-9127-b0fe4740c939
+      aws_profile: MFA
