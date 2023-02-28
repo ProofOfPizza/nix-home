@@ -5,11 +5,6 @@
     autocd = true;
     defaultKeymap = "viins";
     #dotDir = "./.config/nixpkgs/program/shell/zsh";
-    history = {
-      size = 10000;
-      save = 10000;
-      path = "/home/chai/zsh_history";
-     };
     shellAliases = {
       backend = "gf; x=$(docker ps -a -q); docker stop $x; if [ ! -z '$x' ]; then docker rm $x; fi; npm run start:be";
       backend-all = "gf; x=$(docker ps -a -q); docker stop $x; if [ ! -z '$x' ]; then docker rm $x; fi; docker system prune --all --force; docker system prune --volumes --force; npm run build:be; npm run start:be";
@@ -68,6 +63,14 @@
       ];
     theme = "agnoster";
     extraConfig = ''
+      HISTSIZE="10000"
+      HISTSAVE="10000"
+      HISTFILE="/home/chai/zsh_history"
+      setopt HIST_FCNTL_LOCK
+      setopt HIST_IGNORE_DUPS
+      setopt HIST_IGNORE_SPACE
+      setopt HIST_EXPIRE_DUPS_FIRST
+      setopt SHARE_HISTORY
       export FZF_DEFAULT_OPTS="-m"
       FZF_DEFAULT_OPTS+=" --color='light'"
       FZF_DEFAULT_OPTS+=" --bind 'ctrl-/:toggle-preview'"

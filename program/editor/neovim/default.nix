@@ -76,7 +76,7 @@ in
     let g:Tex_FoldedEnvironments = ""
     let g:Tex_FoldedMisc = ""
     let mapleader = " "
-    set clipboard=unnamedplus
+    set clipboard+=unnamedplus
     filetype plugin on
     filetype plugin indent on
     let g:hident_on_save = 1
