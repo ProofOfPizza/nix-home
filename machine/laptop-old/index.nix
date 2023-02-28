@@ -79,6 +79,7 @@ in
     pkgs-unstable.wireguard-tools
     pkgs-unstable.xarchiver
     pkgs-unstable.xmrig
+    pkgs-unstable.xclip
     pkgs-unstable.yq
     pkgs-unstable.zathura
     pkgs-unstable.zoom-us
