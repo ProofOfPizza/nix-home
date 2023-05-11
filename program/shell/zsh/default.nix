@@ -36,7 +36,7 @@
       gtr = "cd ~/code/Kairos/src/e2e && r";
       inf = "~/Nextcloud/Documents/nerdspul/werkspul/dev-division/mosar-infra && r";
       kk = "kill -9 $(pgrep KeeWeb)";
-      kswp = "cd ~/.local/share/nvim/swap && rm *.* && ls -a";
+      kswp = "cd ~/.local/state/nvim/swap && rm *.* && ls -a";
       nixos-rb ="sudo nixos-rebuild switch -I nixos-config=/home/chai/.config/nixpkgs/system/configuration.nix";
       nx = "~/.config/nixpkgs";
       nxo = "nx && o";
@@ -47,7 +47,7 @@
       seed = "x=$(pwd); cd ~/code/Kairos/src/seeds; npm run seed:userdata; cd $x";
       seed-all = "x=$(pwd); cd ~/code/Kairos/src/seeds; npm run seed:userdata; npm run seed:testdata; cd $x";
       seed-db = "x=$(pwd); cd ~/code/Kairos/src/seeds; npm run seed:createDb; cd $x";
-      swp = "cd ~/.local/share/nvim/swap && ls -a";
+      swp = "cd ~/.local/state/nvim/swap && ls -a";
       trash = "cd ~/.local/share/Trash && r";
       try = "~/code/try-outs && r";
       vtrash = "cd ~/.local/share/vifm/Trash && r";

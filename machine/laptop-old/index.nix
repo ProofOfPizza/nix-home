@@ -15,6 +15,7 @@ in
 
   home.packages = [
     pkgs.alacritty
+    pkgs-unstable.arandr
     pkgs-unstable.azuredatastudio
     pkgs-unstable.brave
     pkgs-unstable.chromium
@@ -65,6 +66,7 @@ in
     pkgs-unstable.sublime3
     pkgs-unstable.traceroute
     pkgs-unstable.transmission-gtk
+    pkgs-unstable.udiskie
     pkgs-unstable.ueberzug
     pkgs-unstable.unzip
     pkgs-unstable.unrar
@@ -80,6 +82,7 @@ in
     pkgs-unstable.xarchiver
     pkgs-unstable.xmrig
     pkgs-unstable.xclip
+    pkgs-unstable.xournalpp
     pkgs-unstable.yq
     pkgs-unstable.zathura
     pkgs-unstable.zoom-us

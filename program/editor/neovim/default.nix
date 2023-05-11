@@ -1,5 +1,6 @@
 with import <nixpkgs> {};
 #{ sources ? import ./nix/sources.nix, pkgs ? import sources.nixpkgs {} }:
+# let coc = callPackage ./coc-new.nix { pkgs-unstable = pkgs; };
 let coc = callPackage ./coc-plugin.nix {};
     pkgs-unstable = import <pkgs-unstable> {};
 in
@@ -24,7 +25,7 @@ in
     # neoformat
     papercolor-theme
     PreserveNoEOL
-    supertab
+    # supertab
     syntastic
     tabular
     typescript-vim
@@ -38,9 +39,26 @@ in
     vim-jsx-pretty
     vim-markdown
     vim-nix
+    # vim-plug
     vim-terraform
   ];
   extraConfig = ''
+" Put plugins and dictionaries in this directory
+" let vimDir = expand('$XDG_CONFIG_HOME/nvim')
+" let vimPlugFile = vimDir . '/autoload/plug.vim'
+
+" Install vim-plug if not present
+"if empty(glob(vimPlugFile))
+    " There is no vim-plug file → Download and install it"
+"    let vimPlugUrl = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+"    exec '!curl -fLo ' . vimPlugFile . ' --create-dirs ' . vimPlugUrl
+"    autocmd VimEnter * PlugInstall
+" endif
+
+" call plug#begin()
+  "      Plug 'neoclide/coc.nvim', { 'branch': 'master', 'do': 'yarn install --frozen-lockfile' }
+" call plug#end()
+
     unlet! skip_defaults_vim
     "source $VIMRUNTIME/defaults.vim
 
@@ -163,8 +181,23 @@ in
     map <leader>4 ":b "
     nnoremap <C-x> :bd<cr>
 
+    "============================= C O C ===================================================="
+
+
     " CoC extensions
     let g:coc_global_extensions = ['coc-solargraph', 'coc-json', 'coc-html', 'coc-tsserver', 'coc-xml', 'coc-prettier', 'coc-eslint', 'coc-angular']
+
+    " Some servers have issues with backup files, see #649
+    set nobackup
+    set nowritebackup
+
+    " Having longer updatetime (default is 4000 ms = 4s) leads to noticeable
+    " delays and poor user experience
+    set updatetime=300
+
+    " Always show the signcolumn, otherwise it would shift the text each time
+    " diagnostics appear/become resolved
+    set signcolumn=yes
 
     " Add CoC Prettier if prettier is installed
     if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
@@ -184,6 +217,9 @@ in
 
     " Remap keys for applying codeAction to the current buffer.
     nmap <leader>d  <Plug>(coc-codeaction)
+    nmap <leader>k  <Plug>(coc-codeaction-selected)w
+    nmap <leader>j  <Plug>(coc-codeaction-line)
+    nmap <leader>h  <Plug>(coc-codeaction-cursor)
     " Apply AutoFix to problem on the current line.
     nmap <leader>f  <Plug>(coc-fix-current)
 
@@ -203,6 +239,23 @@ in
     " Highlight the symbol and its references when holding the cursor.
     autocmd CursorHold * silent call CocActionAsync('highlight')
 
+    inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+    inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+    " Make <CR> to accept selected completion item or notify coc.nvim to format
+    " <C-g>u breaks current undo, please make your own choice
+    inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+    function! CheckBackspace() abort
+      let col = col('.') - 1
+      return !col || getline('.')[col - 1]  =~# '\s'
+    endfunction
+
+    "============================= C O C ===================================================="
 
     " Spellcheck for features and markdown
     au BufRead,BufNewFile *.md setlocal spell

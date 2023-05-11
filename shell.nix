@@ -7,5 +7,6 @@ pkgs.mkShell {
     sops
     terraform
     nodejs-18_x
+    yarn
   ];
 }
