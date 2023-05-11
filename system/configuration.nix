@@ -143,21 +143,21 @@ unzip
   ];
 
   networking.wg-quick.interfaces = {
-    wg-firewalla = {
-      address = [ "10.200.149.4/32" ];
-      listenPort = 51820;
-      dns = [ "10.200.149.1" ];
-      mtu = 1412;
-      privateKeyFile = "/etc/wireguard/keys/firewalla-private";
-      peers = [
-        {
-          publicKey = "3xUCRZNLFaAtwpVtLQXER+t4INT87AjmR9e6Z7vJ6nM=";
-          allowedIPs = [ "0.0.0.0/0" ];
-          endpoint = "dm2lm0tqnlo.d.firewalla.org:51820";
-          persistentKeepalive = 25;
-        }
-      ];
-    };
+    # wg-firewalla = {
+    #   address = [ "10.200.149.4/32" ];
+    #   listenPort = 51820;
+    #   dns = [ "10.200.149.1" ];
+    #   mtu = 1412;
+    #   privateKeyFile = "/etc/wireguard/keys/firewalla-private";
+    #   peers = [
+    #     {
+    #       publicKey = "3xUCRZNLFaAtwpVtLQXER+t4INT87AjmR9e6Z7vJ6nM=";
+    #       allowedIPs = [ "0.0.0.0/0" ];
+    #       endpoint = "dm2lm0tqnlo.d.firewalla.org:51820";
+    #       persistentKeepalive = 25;
+    #     }
+    #   ];
+    # };
     #wg-mullvad-nl = {
     #  #mullvad-nl20
     #  address = [ "10.67.157.84/32" "fc00:bbbb:bbbb:bb01::4:9d53/128" ];
