@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, unstable, ... }:
 
 {
   imports =
@@ -117,7 +117,7 @@
   fonts.fontconfig.enable = true;
   fonts.fontconfig.defaultFonts.monospace = [ "Inconsolata-g for Powerline:h12" ];
   console.font =  "Meslo for Powerline:h12";
-
+  console.earlySetup = true;
   sound.enable = true;
 
   hardware = {
@@ -140,51 +140,54 @@
 unzip
    firefox
   #  wget
-  ];
+];
 
-  networking.wg-quick.interfaces = {
-    # wg-firewalla = {
-    #   address = [ "10.200.149.4/32" ];
-    #   listenPort = 51820;
-    #   dns = [ "10.200.149.1" ];
-    #   mtu = 1412;
-    #   privateKeyFile = "/etc/wireguard/keys/firewalla-private";
-    #   peers = [
-    #     {
-    #       publicKey = "3xUCRZNLFaAtwpVtLQXER+t4INT87AjmR9e6Z7vJ6nM=";
-    #       allowedIPs = [ "0.0.0.0/0" ];
-    #       endpoint = "dm2lm0tqnlo.d.firewalla.org:51820";
-    #       persistentKeepalive = 25;
-    #     }
-    #   ];
-    # };
-    #wg-mullvad-nl = {
-    #  #mullvad-nl20
-    #  address = [ "10.67.157.84/32" "fc00:bbbb:bbbb:bb01::4:9d53/128" ];
-    #  dns = [ "193.138.218.74" ]; # mullvad public dns
-    #  privateKeyFile = "/etc/wireguard/keys/mullvad-nl20-private";
-    #  peers = [
-    #    {
-    #      publicKey = "StMPmol1+QQQQCJyAkm7t+l/QYTKe5CzXUhw0I6VX14=";
-    #      allowedIPs = [ "0.0.0.0/0" "::0/0" ];
-    #      endpoint = "92.60.40.194:51820";
-    #    }
-    #  ];
-    #};
-    wg-mullvad-nl = {
-      #mullvad-nl-5
-      address = [ "10.67.157.84/32" "fc00:bbbb:bbbb:bb01::4:9d53/128" ];
-      dns = [ "193.138.218.74" ]; # mullvad public dns
-      privateKeyFile = "/etc/wireguard/keys/mullvad-nl5-private";
-      peers = [
-        {
-          publicKey = "33BoONMGCm2vknq2eq72eozRsHmHQY6ZHEEZ4851TkY=";
-          allowedIPs = [ "0.0.0.0/0" "::0/0" ];
-          endpoint = "193.32.249.70:51820";
-        }
-      ];
-    };
-  };
+  #networking.wg-quick.interfaces = {
+  #  # wg-firewalla = {
+  #  #   address = [ "10.200.149.4/32" ];
+  #  #   listenPort = 51820;
+  #  #   dns = [ "10.200.149.1" ];
+  #  #   mtu = 1412;
+  #  #   privateKeyFile = "/etc/wireguard/keys/firewalla-private";
+  #  #   peers = [
+  #  #     {
+  #  #       publicKey = "3xUCRZNLFaAtwpVtLQXER+t4INT87AjmR9e6Z7vJ6nM=";
+  #  #       allowedIPs = [ "0.0.0.0/0" ];
+  #  #       endpoint = "dm2lm0tqnlo.d.firewalla.org:51820";
+  #  #       persistentKeepalive = 25;
+  #  #     }
+  #  #   ];
+  #  # };
+  #  #wg-mullvad-nl = {
+  #  #  #mullvad-nl20
+  #  #  address = [ "10.67.157.84/32" "fc00:bbbb:bbbb:bb01::4:9d53/128" ];
+  #  #  dns = [ "193.138.218.74" ]; # mullvad public dns
+  #  #  privateKeyFile = "/etc/wireguard/keys/mullvad-nl20-private";
+  #  #  peers = [
+  #  #    {
+  #  #      publicKey = "StMPmol1+QQQQCJyAkm7t+l/QYTKe5CzXUhw0I6VX14=";
+  #  #      allowedIPs = [ "0.0.0.0/0" "::0/0" ];
+  #  #      endpoint = "92.60.40.194:51820";
+  #  #    }
+  #  #  ];
+  #  #};
+  #  wg-mullvad-nl = {
+  #    #mullvad-nl-5
+  #    address = [ "10.67.157.84/32" "fc00:bbbb:bbbb:bb01::4:9d53/128" ];
+  #    dns = [ "193.138.218.74" ]; # mullvad public dns
+  #    privateKeyFile = "/etc/wireguard/keys/mullvad-nl5-private";
+  #    peers = [
+  #      {
+  #        publicKey = "33BoONMGCm2vknq2eq72eozRsHmHQY6ZHEEZ4851TkY=";
+  #        allowedIPs = [ "0.0.0.0/0" "::0/0" ];
+  #        endpoint = "193.32.249.70:51820";
+  #      }
+  #    ];
+  #  };
+  #};
+
+
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

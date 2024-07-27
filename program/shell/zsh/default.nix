@@ -43,6 +43,7 @@
       nxr = "nx && r";
       o = "x=$(fzfi); if [[ ! -z $x ]]; then vim $x; fi";
       r = "vicd ./";
+      p = "~/code/try-outs && python";
       reboot = "dstop && shutdown -r now";
       seed = "x=$(pwd); cd ~/code/Kairos/src/seeds; npm run seed:userdata; cd $x";
       seed-all = "x=$(pwd); cd ~/code/Kairos/src/seeds; npm run seed:userdata; npm run seed:testdata; cd $x";

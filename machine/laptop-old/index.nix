@@ -26,7 +26,7 @@ in
     # docker-credential-helpers
     pkgs-unstable.element-desktop
     pkgs-unstable.evince
-    # unstable.exodus
+    # pkgs-unstable.exodus
     pkgs-unstable.feh
     pkgs-unstable.ffmpegthumbnailer
     pkgs-unstable.firefox
@@ -77,6 +77,7 @@ in
     pkgs-unstable.vivaldi-widevine
     pkgs-unstable.vlc
     pkgs-unstable.vscodium
+    pkgs-unstable.whatsapp-for-linux
     pkgs-unstable.whois
     pkgs-unstable.wireguard-tools
     pkgs-unstable.xarchiver

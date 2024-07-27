@@ -18,7 +18,7 @@
     docker
     gitAndTools.gitFull
     gnome3.libgnome-keyring
-    home-manager
+    # home-manager
     htop
     libsecret
     nano
@@ -33,5 +33,9 @@
     firefox
     gimp
   ];
+  nixpkgs.url = "nixpkgs/nixos-unstable";
+    environment.systemPackages.home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 }
-
